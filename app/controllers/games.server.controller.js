@@ -1,0 +1,23 @@
+var constants = require('../constants');
+var mongoose = require('mongoose');
+var Game = mongoose.model('Game');
+
+exports.renderGames = function(req, res) {
+    /** the games */
+    var games = [];
+    
+    Game.find({
+        console : "console1"
+    }, (err, gamesDb) => {
+        if(err) {
+            return next(err);
+        } else {
+            games = gamesDb;
+            
+            res.render('games', {
+                title : constants.games.title,
+                games : games
+            })
+        }
+    })
+}

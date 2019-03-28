@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+       <h1><%= title %></h1>
+       <% games.forEach(function(game) { %>
+        <div>
+            <ul>
+                <li>
+                    name : <a href='gameDetail/<%= game.name %>'><%= game.name %></a>
+                </li>
+                <li>
+                    console : <%= game.console %>
+                </li>
+            </ul>
+            
+        </div>
+        <%}) %>
+    </body>
+</html>
