@@ -13,6 +13,11 @@
                 <li>
                     console : <%= game.console %>
                 </li>
+                <% if(game.deleted) { %>
+                <li>
+                    deleted : <%= game.deleted %>
+                </li>
+                <% } %>
             </ul>
             
         </div>

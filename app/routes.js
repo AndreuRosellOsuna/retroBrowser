@@ -16,4 +16,7 @@ module.exports = function(app) {
     
     var synchroController = require('./controllers/synchro.server.controller');
     app.get('/synchro', synchroController.renderSynchro);
+    
+    var performSynchroController = require('./controllers/performSynchro.server.controller');
+    app.get('/performSynchro', performSynchroController.performSynchro);
 };

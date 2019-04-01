@@ -5,7 +5,11 @@
     <body>
        <h1><%= title %></h1>
        <div>
-           <button><%= button %></button>
+           <!-- <button><%= button %></button> -->
+           <form action="/performSynchro">
+                <input type="submit" value="<%= button %>" />
+
+           </form>
        </div>
     </body>
 </html>

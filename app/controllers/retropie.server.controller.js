@@ -1,7 +1,7 @@
 var constants = require('../constants');
 var sftpService = require('../services/sftp.retropiestate.service');
 
-exports.getRetropieState = function(req, res) {
+exports.getRetropieState = function(req, res, next) {
     
     var consoles;
     var promise = new Promise(function(resolve, reject) {
@@ -15,6 +15,7 @@ exports.getRetropieState = function(req, res) {
         render(res, consoles);
     }, function(err) {
         // error
+        next(err);
     });
 }
 

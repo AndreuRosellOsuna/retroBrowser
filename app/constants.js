@@ -7,7 +7,7 @@ module.exports = {
         title : 'my games'
     },
     consoles : {
-        title : 'my consoles'
+        title : 'just consoles in rp'
     },
     retropie : {
         title : 'retropie roms'
