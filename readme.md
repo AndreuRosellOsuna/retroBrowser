@@ -19,3 +19,18 @@ Stop db :
 
 start app :
 `launch.bat`
+
+
+### environment versions
+
+##### node
+```
+node --version
+v8.11.3
+```
+
+##### npm
+```
+npm --version
+5.6.0
+```

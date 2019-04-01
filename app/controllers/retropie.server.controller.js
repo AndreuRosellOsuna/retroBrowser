@@ -1,7 +1,7 @@
 var constants = require('../constants');
 var sftpService = require('../services/sftp.retropiestate.service');
 
-exports.doSynchro = function(req, res) {
+exports.getRetropieState = function(req, res) {
     
     var consoles;
     var promise = new Promise(function(resolve, reject) {
@@ -24,8 +24,8 @@ exports.doSynchro = function(req, res) {
  * @param {*} сonsoles
  */
 function render(res, consoles) {
-    res.render('synchroOk', {
-        title: constants.synchro.title,
+    res.render('retropie', {
+        title: constants.retropie.title,
         consoles: consoles
     });
 }

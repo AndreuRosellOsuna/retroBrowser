@@ -9,10 +9,15 @@ module.exports = {
     consoles : {
         title : 'my consoles'
     },
+    retropie : {
+        title : 'retropie roms'
+    },
     synchro : {
-        title : 'synchro state'
+        title : 'synchro page',
+        button : 'do synchro'
     },
     sftp : {
-        romsRoot : '/home/pi/RetroPie/roms'
+        // romsRoot : '/Retropie/roms' // mocked
+        romsRoot : '/home/pi/RetroPie/roms' // prod
     }
 }

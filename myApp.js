@@ -2,6 +2,7 @@ var express = require('express');
 var constants = require('./run_constants');
 
 require('./app/database');
+require('./app/sftp.connection');
 
 var app = express();
 

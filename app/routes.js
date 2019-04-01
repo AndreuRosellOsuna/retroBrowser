@@ -11,6 +11,9 @@ module.exports = function(app) {
     var gameDetailController = require('./controllers/gameDetail.server.controller');
     app.get('/gameDetail/:gameName', gameDetailController.renderGame);
     
-    var synchroController = require('./controllers/retropie.server.controller');
-    app.get('/retropie', synchroController.doSynchro);
+    var retropieController = require('./controllers/retropie.server.controller');
+    app.get('/retropie', retropieController.getRetropieState);
+    
+    var synchroController = require('./controllers/synchro.server.controller');
+    app.get('/synchro', synchroController.renderSynchro);
 };

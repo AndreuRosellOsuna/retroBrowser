@@ -65,3 +65,4 @@ code myapp.lnk
 desktop.ini
 shutdownmongo.lnk
 startmongo.lnk
+.vscode/launch.json
