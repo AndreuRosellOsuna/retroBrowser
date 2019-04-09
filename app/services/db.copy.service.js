@@ -2,6 +2,7 @@ var constants = require('../constants');
 
 var mongoose = require('mongoose');
 var Game = mongoose.model('Game');
+var Console = mongoose.model('Console');
 
 
 exports.doCopyFromRPToDb = doCopyFromRPToDb;
@@ -20,6 +21,8 @@ function doCopyFromRPToDb(rpState, dbState, writeResolve, writeReject) {
     consoles.forEach(console => {
 
         var consoleName = console.name;
+
+        saveConsole(consoleName, dbState);
 
         console.roms.forEach(rom => {
             
@@ -107,6 +110,43 @@ function doCopyFromRPToDb(rpState, dbState, writeResolve, writeReject) {
 
     });
 
+    
+    function saveConsole(consoleName, dbState) {
+        
+        // look for consoles to save in db
+        var consoleInDB = dbState.map(function(game) {
+            return game.console;
+        }).includes(consoleName);
+
+        if(!consoleInDB) {
+
+            // init game promise
+            var saveKey ="db.consoles.".concat(consoleName); 
+            savePromises[saveKey] = false;
+
+            var newConsole = new Console({
+                name : consoleName
+            });
+            newConsole.save(function(err){
+                if(err) {
+                    writeReject("impossible to write console " + consoleName);
+                } else {
+
+                    savePromises[saveKey] = true;
+                    
+                    // look for other promises
+                    var allOperationsPerformed = Object.keys(savePromises).map(function(key) {
+                        return savePromises[key];
+                    }).reduce((total, sum) => total && sum);
+
+                    if(allOperationsPerformed) {
+                        writeResolve();
+                    }
+                }
+            });
+        }
+
     Object.keys(savePromises).length == 0 ? writeResolve() : null;
+    }
 }
     

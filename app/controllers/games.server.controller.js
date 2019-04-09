@@ -14,8 +14,7 @@ exports.renderGames = function(req, res, next) {
         } else {
             games = gamesDb;
             
-            res.render('games', {
-                title : constants.games.title,
+            res.json({
                 games : games
             })
         }

@@ -66,3 +66,6 @@ desktop.ini
 shutdownmongo.lnk
 startmongo.lnk
 .vscode/launch.json
+
+# angular dist
+public

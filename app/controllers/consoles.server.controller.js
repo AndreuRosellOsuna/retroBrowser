@@ -1,21 +1,19 @@
 var constants = require('../constants');
-var sftp = require('../sftp.connection');
 
-exports.renderConsoles = function(req, res) {
+var mongoose = require('mongoose');
+var Console = mongoose.model('Console');
+
+exports.renderConsoles = function(req, res, next) {
     /** the consoles */
     var consoles = [];
     
-    sftp.list(constants.sftp.romsRoot)
-    .then(data => {
-
-        data.forEach(function(consoleInRP)   {
-            consoles.push({code : consoleInRP.name});
-        });
-
-        res.render('consoles', {
-            title : constants.consoles.title,
-            consoles : consoles
-        });
-
-    });    
+    Console.find({}, function(err, consolesDB) {
+        if(err) {
+            next();
+        } else {
+            res.json({
+                consoles : consolesDB
+            });
+        }
+    });
 }
