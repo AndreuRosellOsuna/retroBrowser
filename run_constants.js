@@ -18,5 +18,8 @@ module.exports = {
       username: "pi",
       password: "raspberry"
     }
+  },
+  mode : {
+    dev: true
   }
 };

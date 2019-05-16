@@ -9,9 +9,18 @@ var app = express();
 // app.set('views', './app/views');
 // app.set('view engine', 'ejs');
 
+if(constants.mode.dev) {
+    app.use(function (req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
+}
+
 require('./app/routes')(app);
 
 app.use(express.static('./public'));
+
 
 // ftp config
 // require('./app/sftp-client');

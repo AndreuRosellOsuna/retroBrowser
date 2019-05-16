@@ -21,6 +21,10 @@ start app :
 `launch.bat`
 
 
+### front files
+Put the front files on public folder.
+
+
 ### environment versions
 
 ##### node

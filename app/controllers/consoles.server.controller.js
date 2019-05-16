@@ -11,9 +11,7 @@ exports.renderConsoles = function(req, res, next) {
         if(err) {
             next();
         } else {
-            res.json({
-                consoles : consolesDB
-            });
+            res.json(consolesDB);
         }
     });
 }
