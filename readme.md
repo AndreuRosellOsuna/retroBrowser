@@ -38,3 +38,10 @@ v8.11.3
 npm --version
 5.6.0
 ```
+
+***
+
+#### activate git
+```
+eval $(ssh-agent -s)
+```
