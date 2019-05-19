@@ -33,17 +33,17 @@ exports.performSynchro = function (req, res) {
             dbCopyService.doCopyFromRPToDb(gamesInRp, gamesInDb, writeResolve, writeReject);
             
         }).then(function() {
-            render(res, 'OK');
+            doResult(res, 'OK');
 
         }, function(err) {
             console.log(err);
-            render(res, 'KO');
+            doResult(res, 'KO');
         });
 
     }, function(err) {
         // next(err);
         console.log(err);
-        render(res, 'KO');
+        doResult(res, 'KO');
     });
 }
 
@@ -97,9 +97,11 @@ function callDB(gamesInDb, promiseState, globalResolve, globalReject) {
  * @param {*} res 
  * @param {string} result
  */
-function render(res, result) {
-    res.render('synchroResult', {
-        title: constants.synchro.title,
-        result: result
-    });
+function doResult(res, result) {
+    // res.render('synchroResult', {
+    //     title: constants.synchro.title,
+    //     result: result
+    // });
+    
+    res.json(result)
 }
