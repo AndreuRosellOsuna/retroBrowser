@@ -26,7 +26,6 @@ exports.performSynchro = function (req, res) {
         callDB(gamesInDb, promiseState, globalResolve, globalReject);
 
     }).then(function() {
-        // render(res, 'OK');
         
         var writePromise = new Promise(function(writeResolve, writeReject) {
             
@@ -41,7 +40,6 @@ exports.performSynchro = function (req, res) {
         });
 
     }, function(err) {
-        // next(err);
         console.log(err);
         doResult(res, 'KO');
     });
@@ -53,7 +51,7 @@ function callRP(gamesInRp, promiseState, globalResolve, globalReject) {
     var rpPromise = new Promise(function(resolve, reject) {
         
         // Get state from RetroPie
-        sftpService.getRPState(resolve);
+        sftpService.getRPState(resolve, reject);
     }).then(function(resolveData) {
 
         resolveData.forEach(function(data) {

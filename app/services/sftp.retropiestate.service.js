@@ -1,15 +1,21 @@
 var constants = require('../constants');
-var sftp = require('../sftp.connection');
+var sftp;
 
 var consolesRoot = constants.sftp.romsRoot;
 
 exports.getRPState = getRPState;
 
+
+function getRPState(resolve, reject) {
+    sftp = require('../sftp.connection')(doGetRPState, resolve, reject);
+
+}
+
 /**
  * Get all consoles and roms states from Retropie
  * @param {*} resolve resolve function
  */
-function getRPState(resolve) {
+function doGetRPState(resolve) {
 
     // The consoles list
     var consoles = [];

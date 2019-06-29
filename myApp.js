@@ -2,12 +2,8 @@ var express = require('express');
 var constants = require('./run_constants');
 
 require('./app/database');
-// require('./app/sftp.connection');
 
 var app = express();
-
-// app.set('views', './app/views');
-// app.set('view engine', 'ejs');
 
 if(constants.mode.dev) {
     app.use(function (req, res, next) {
