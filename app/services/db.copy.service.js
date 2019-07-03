@@ -9,8 +9,10 @@ exports.doCopyFromRPToDb = doCopyFromRPToDb;
 
 /**
  * Copy remote state from retropie to db
- * @param {*} rpState retropie consoles and games
- * @param {*} dbState db consoles and games
+ * @param {*} rpState the actual list of consoles and games in rp
+ * @param {*} dbState the actual list of consoles and games in the db
+ * @param {*} writeResolve resolve promise function
+ * @param {*} writeReject reject promise function
  */
 function doCopyFromRPToDb(rpState, dbState, writeResolve, writeReject) {
 
@@ -110,7 +112,11 @@ function doCopyFromRPToDb(rpState, dbState, writeResolve, writeReject) {
 
     });
 
-    
+    /**
+     * Save the console in data base if not exists
+     * @param {*} consoleName the console name
+     * @param {*} dbState the actual list of games and consoles in db
+     */
     function saveConsole(consoleName, dbState) {
         
         // look for consoles to save in db
